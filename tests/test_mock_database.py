@@ -1,11 +1,12 @@
 import asyncio
+import json
 from beanie import init_beanie
 from fastapi.testclient import TestClient
 from httpx import AsyncClient
 import pytest
 
 from models.admin import Admin
-from models.student import Student
+from models.pokemon import Pokemon
 from tests.conftest import mock_no_authentication
 
 
@@ -17,21 +18,16 @@ class TestMockAuthentication:
     @pytest.mark.anyio
     async def test_mock_databases(self, client_test: AsyncClient):
         # generate data
-        await Admin(
-            fullname="admin", email="admin@admin.com", password="admin"
+        await Pokemon(
+            pokemonId=1,
+            name="ivysaur",
+            image="http://some/url"
         ).create()
 
-        await Student(
-            fullname="student",
-            email="student@student.com",
-            course_of_study="computer science",
-            year=2021,
-            gpa=4.0,
-        ).create()
-
-        response = await client_test.get("student")
+        response = await client_test.get("pokemon")
 
         assert response.status_code == 200
+
 
     @pytest.mark.anyio
     async def test_mock_database(self, client_test: AsyncClient):
@@ -39,14 +35,17 @@ class TestMockAuthentication:
             fullname="admin", email="admin@admin.com", password="admin"
         ).create()
 
-        await Student(
-            fullname="student",
-            email="student@student.com",
-            course_of_study="computer science",
-            year=2021,
-            gpa=4.0,
+        await Pokemon(
+            pokemonId=1,
+            name="ivysaur",
+            image="http://some/url"
         ).create()
 
-        response = await client_test.get("student")
+        data = {
+            "name": "ivysaur", 
+            "pokemonId": 1
+        }
+
+        response = await client_test.post("pokemon/verify", data=json.dumps(data))
 
         assert response.status_code == 200

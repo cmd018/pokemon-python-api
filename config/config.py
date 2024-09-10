@@ -10,6 +10,9 @@ class Settings(BaseSettings):
     # database configurations
     DATABASE_URL: Optional[str] = None
 
+    # CORS whitelist origin
+    ORIGIN: str = ""
+
     # JWT
     secret_key: str = "secret"
     algorithm: str = "HS256"

@@ -1,8 +1,6 @@
 # FastAPI and MongoDB Boilerplate
 
-A simple starter for building RESTful APIs with FastAPI and MongoDB.
-
-![image](./img.jpg)
+Python FastAPI backend API to retrieve pokemon information
 
 ## Features
 
@@ -10,6 +8,15 @@ A simple starter for building RESTful APIs with FastAPI and MongoDB.
 + MongoDB database.
 + Authentication
 + Deployment
+
+Application exposes many endpoints: swagger specification can be found at `/docs`
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed on your machine:
+
+- [Python 3](https://www.python.org): Ensure that Python, preferably version 3.9 or higher, is installed on your system, as this project utilizes the latest versions of TypeScript and Nodemon.
+- [Docker](https://www.docker.com/): Docker: Accelerated Container Application Development.
 
 ## Using the applicaiton
 
@@ -58,12 +65,7 @@ The test follow by the official support [FastAPI testing guide](https://fastapi.
 
 ## Deployment
 
-This application can be deployed on any PaaS such as [Heroku](https://heroku.com) or [Okteto](https://okteto) and any other cloud service provider.
-
-## Contributing ?
-
-
-Fork the repo, make changes and send a PR. We'll review it together!
+This application can be deployed on any PaaS such as [AWS](https://aws.amazon.com).
 
 ## License
 
